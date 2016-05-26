@@ -52,8 +52,9 @@ module.exports = function (grunt)
             callback(error, result);
         }
 
+        // prompt the user if no password is specified
         if (options['package'].certificate.password === 'example_password') {
-            options['package'].certificate.password = prompt('Enter certificate password: ');
+            options['package'].certificate.password = prompt.hide('\nEnter certificate password: ');
         }
 
         // Options
@@ -98,8 +99,9 @@ module.exports = function (grunt)
             grunt.fatal('Invalid input folder.');
         }
 
+        // prompt the user if no password is specified
         if (options['package'].certificate.password === 'example_password') {
-            options['package'].certificate.password = prompt('Enter certificate password: ');
+            options['package'].certificate.password = prompt.hide('\nEnter certificate password: ');
         }
 
         var spawn_options = {
