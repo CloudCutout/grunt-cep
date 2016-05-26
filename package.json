@@ -23,9 +23,10 @@
   ],
   "main": "Gruntfile.js",
   "dependencies": {
-    "lodash": "~3.9.3",
     "async": "~1.2.1",
-    "node-uuid": "~1.4.3"
+    "lodash": "~3.9.3",
+    "node-uuid": "~1.4.3",
+    "prompt-sync": "^4.1.4"
   },
   "devDependencies": {
     "grunt": "~0.4.5"

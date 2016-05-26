@@ -21,7 +21,8 @@ module.exports = function (grunt)
     var path = require('path'),
         _ = require('lodash'),
         async = require('async'),
-        cep = require('../lib/cep.js')(grunt);
+        cep = require('../lib/cep.js')(grunt),
+        prompt = require('prompt-sync')();
 
     // Gets signing toolkit executable path
     function get_zxp_path()
@@ -49,6 +50,10 @@ module.exports = function (grunt)
         {
             grunt.fatal('Can not generate a self-signed certificate without specifying an "author_name" in the bundle properties.');
             callback(error, result);
+        }
+
+        if (options['package'].certificate.password === 'example_password') {
+            options['package'].certificate.password = prompt('Enter certificate password: ');
         }
 
         // Options
@@ -91,6 +96,10 @@ module.exports = function (grunt)
         if (!input_folder)
         {
             grunt.fatal('Invalid input folder.');
+        }
+
+        if (options['package'].certificate.password === 'example_password') {
+            options['package'].certificate.password = prompt('Enter certificate password: ');
         }
 
         var spawn_options = {
